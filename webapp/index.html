@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <title>Rise and Shine</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; margin:0; background:#0b1220; color:#fff; }
+    .wrap { max-width:680px; margin:0 auto; padding:24px; }
+    .card { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:18px; margin-bottom:16px; }
+    h1 { margin:0 0 8px; font-size:34px; }
+    .muted { color:#c8d1e0; }
+    button { background:#0a84ff; border:none; color:white; padding:12px 16px; border-radius:12px; font-weight:600; }
+    button[disabled] { opacity:.5; }
+    input { width:100%; padding:12px; border-radius:12px; border:1px solid #4b5873; background:#0f1a2d; color:white; }
+    video { width:100%; border-radius:12px; background:black; }
+    .ok { color:#58d68d; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Rise and Shine</h1>
+    <p id="authState" class="muted"></p>
+    <p class="muted">Set your plank once, lock it in, and prove it every morning.</p>
+
+    
+    <div class="card">
+      <h3>Account</h3>
+      <input id="email" type="email" placeholder="Email" />
+      <div style="height:8px"></div>
+      <input id="password" type="password" placeholder="Password" />
+      <div style="margin-top:12px;display:flex;gap:10px">
+        <button id="signUpBtn">Sign Up</button>
+        <button id="signInBtn">Sign In</button>
+        <button id="signOutBtn">Sign Out</button>
+      </div>
+      <p id="authMsg" class="muted"></p>
+    </div>
+
+    <div class="card">
+      <h3>1) Lock Your Base Plank Time</h3>
+      <p class="muted">You can only choose this once.</p>
+      <input id="baseSeconds" type="number" min="5" max="300" step="1" placeholder="e.g. 20" />
+      <div style="margin-top:12px"><button id="lockBtn">Lock Time</button></div>
+      <p id="lockStatus" class="muted"></p>
+    </div>
+
+    <div class="card">
+      <h3>2) Today's Required Plank</h3>
+      <p id="requiredText"></p>
+      <video id="preview" autoplay playsinline muted></video>
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <button id="startBtn">Start Verification</button>
+        <button id="stopBtn" disabled>Stop</button>
+      </div>
+      <p id="status" class="muted"></p>
+      <p id="progress" class="ok"></p>
+    </div>
+
+    <div class="card">
+      <h3>Morning History</h3>
+      <ul id="history"></ul>
+    </div>
+  </div>
+  <div id="cookieBanner" class="card" style="position:sticky;bottom:10px;">
+    <strong>Cookie consent</strong>
+    <p class="muted">We use cookies to keep you signed in on this browser/device.</p>
+    <button id="acceptCookiesBtn">Accept Cookies</button>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
